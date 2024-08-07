@@ -1,0 +1,23 @@
+bins = [0, 12, 18, 25, 35, 60, 100]
+labels = ['Child', 'Teenager', 'Young Adult', 'Adult', 'Middle Age', 'Senior']
+
+# Create a new column 'age_group' in the DataFrame
+data['age_group'] = pd.cut(data['age'], bins=bins, labels=labels)
+
+ 
+
+# Plot: Survival Rate by Age Group
+plt.figure(figsize=(10, 6))
+sns.barplot(x='age_group', y='survived', data=data, errorbar=None, order=labels,color='r')
+plt.title('Survival Rate by Age Group')
+plt.xlabel('Age Group')
+plt.ylabel('Survival Rate')
+plt.show()
+
+# Plot: Age Group Distribution
+plt.figure(figsize=(10, 6))
+sns.countplot(x='age_group', data=data, order=labels)
+plt.title('Age Group Distribution')
+plt.xlabel('Age Group')
+plt.ylabel('Count')
+plt.show()
